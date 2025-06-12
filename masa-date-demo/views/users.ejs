@@ -1,0 +1,25 @@
+
+<h2>Diğer Masalardaki Kullanıcılar</h2>
+<ul>
+<% others.forEach(u => { %>
+  <li><%= u.name %> (Masa: <%= u.table_number %>) 
+    <form method="POST" action="/request">
+      <input type="hidden" name="receiver" value="<%= u.id %>">
+      <button>Talep Gönder</button>
+    </form>
+  </li>
+<% }) %>
+</ul>
+
+<h2>Gelen Talepler</h2>
+<ul>
+<% rec.forEach(r => { %>
+  <li>Gönderen ID: <%= r.sender_id %> – 
+    <form method="POST" action="/respond">
+      <input type="hidden" name="reqId" value="<%= r.id %>">
+      <button name="action" value="accepted">Kabul</button>
+      <button name="action" value="rejected">Reddet</button>
+    </form>
+  </li>
+<% }) %>
+</ul>
