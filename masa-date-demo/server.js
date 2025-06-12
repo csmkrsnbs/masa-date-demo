@@ -7,6 +7,9 @@ const bodyParser = require('body-parser');
 const path = require('path');
 
 const app = express();
+const port=process.env.PORT || 3000;
+app.listen(port, () => { console.log('Sunucu çalışıyor http://localhost:${port}');
+}9;
 const db = new sqlite.Database('./demo.db');
 
 app.use(bodyParser.urlencoded({ extended: true }));
